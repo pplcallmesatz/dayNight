@@ -1,1 +1,133 @@
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Time Wheel</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		.time-wheel {
+			padding-top: 30px;
+			padding-bottom: 50px;
+			border: 1px solid #ccc;
+			position: relative;
+		}
+		.time-wheel:before {
+			content: "";
+			position: absolute;
+			border: 10px solid transparent;
+			border-top-color: #eee;
+			top: 0px;
+			left: calc(50% - 10px );
+			
+		}
+	</style>
+</head>
+
+<body>
+
+  
+
+    <div class="container">
+        <br><br><br>
+        <h1>Bootstrap Starter Template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.
+            <br> All you get is this text and a mostly barebones HTML document.</p>
+    <p class="datetimedisp"></p>
+		
+		<p class="hou"></p>
+		<p class="min"></p>
+		<p class="sec"></p>
+		<div class="time-wheel col-sm-4">
+		<img class="img-responsive wheel" src="assets/img/timeWheel.png">
+		</div>
+	</div>
+    <!-- /.container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script>
+//		$(function()
+//		 {
+//			setTimeout("diplaytime()",1000);
+//			
+//		})
+		function diplaytime()
+		{
+			// To Declare the variable for hours, minutes & second
+			var newDate = new Date();
+			var hours = newDate.getHours();
+			var minutes = newDate.getMinutes();
+			var seconds = newDate.getSeconds();
+			
+			// To Display the current time
+//			$(".datetimedisp").html(newDate.toLocaleTimeString());
+			
+			// To Print the hours, minutes & second
+			$(".hou").html(hours);
+			$(".min").html(minutes);
+			$(".sec").html(seconds);
+			
+			// Calculation for converting hours, minutes & second to "Degree"
+			
+			//formuleee
+			
+			//  360degree = 24hour ;  degree = (total degree / total hour) * actual hour;
+			var degreeHour = (360/24) * hours;
+			// 15degree = 60min; degree=(total degree within hour / total minutes) * actual minutes;
+			var degreeMin =  (15/60) * minutes;
+			// 0.25degree = 1min; degree=(total degree for 1min / total seconds for 1min) * actual seconds;
+			var degreesec =  (0.25/60) * seconds;
+			
+			// Overall total
+			var degree = degreeHour + degreeMin + degreesec;
+			
+			// Printing the output
+			
+//			console.log(degreeHour);
+//			console.log(degreeMin);
+//			console.log(degreesec);
+//			console.log("degree: " , degree );
+//			
+			// Applying the css property
+			$(".wheel").css({transform:  'rotate(-' + degree + 'deg)'})
+			$(".wheel").css(
+							{
+				'transform':  'rotate(-' + degree + 'deg)',
+					'-webkit-transform': 'rotate(-' + degree + 'deg)',
+						'-moz-transform': 'rotate(-' + degree + 'deg)',
+						'-o-transform': 'rotate(-' + degree + 'deg)'
+			
+			})
+
+			
+			 // Alert between a hour gap
+			if ( degreeHour == degree ) {
+							alert("it's " + degreeHour + " o'clock");
+ 			}
+			
+			setTimeout("diplaytime()",1000);
+		}
+	$(document).ready(function(){
+		diplaytime();
+	});
+	
+	</script>
+</body>
+
+</html>
