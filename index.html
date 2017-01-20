@@ -34,6 +34,32 @@
 			left: calc(50% - 10px );
 			
 		}
+        .dayNight {
+            height: 500px;
+            width:500px;
+            background-color: gray;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            z-index: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .dayNight.night-mood {
+            background-color: #291942;
+        }
+        .dayNight.day-mood {
+            background-color: #00bcd4;
+        }
+        .sun, .moon {
+            position: absolute;
+            top: 0;
+            z-index: 0;
+        }
+        .night {
+            position: relative;
+            z-index: 10;
+        }
 	</style>
 </head>
 
@@ -48,10 +74,26 @@
 		<p class="hou"></p>
 		<p class="min"></p>
 		<p class="sec"></p>
+        <p class="scene"></p>
 		<div class="time-wheel col-sm-4">
 		<img class="img-responsive wheel" src="assets/img/timeWheel.png">
 		</div>
 	</div>
+    
+    <div class="container">
+    <div>
+        <span class="hou"></span>
+        <span class="min"></span>
+        <span class="sec"></span>
+                <span class="scene"></span>
+        </div>
+    <div class="dayNight night-mood">
+        <img class="img-responsive night" src="assets/img/night.png">
+        <img class="img-responsive moon" id="moon" src="assets/img/moon.png">
+        <img class="img-responsive sun" src="assets/img/sun.png">
+
+        </div>
+    </div>
     <!-- /.container -->
 
 
@@ -77,10 +119,18 @@
 //			$(".datetimedisp").html(newDate.toLocaleTimeString());
 			
 			// To Print the hours, minutes & second
-			$(".hou").html(hours);
 			$(".min").html(minutes);
 			$(".sec").html(seconds);
-			
+			  
+            if (hours > 12) {
+                var twelveHour = hours - 12;
+                $(".hou").html(twelveHour);
+                $(".scene").html("PM");
+            }
+            else {
+                $(".hou").html(hours);
+                $(".scene").html("AM");
+            }
 			// Calculation for converting hours, minutes & second to "Degree"
 			
 			//formuleee
@@ -102,8 +152,10 @@
 //			console.log(degreesec);
 //			console.log("degree: " , degree );
 //			
+            
+        
 			// Applying the css property
-			$(".wheel").css({transform:  'rotate(-' + degree + 'deg)'})
+//			$(".wheel").css({transform:  'rotate(-' + degree + 'deg)'})
 			$(".wheel").css(
 							{
 				'transform':  'rotate(-' + degree + 'deg)',
@@ -112,8 +164,22 @@
 						'-o-transform': 'rotate(-' + degree + 'deg)'
 			
 			})
-
+	$(".moon, .sun").css(
+							{
+				'transform':  'rotate(-' + degree + 'deg)',
+					'-webkit-transform': 'rotate(-' + degree + 'deg)',
+						'-moz-transform': 'rotate(-' + degree + 'deg)',
+						'-o-transform': 'rotate(-' + degree + 'deg)'
 			
+			})
+
+    var moonOpacityInt = hours -17;
+            
+	var moonOpacity = (moonOpacityInt/6);
+            var sunOpacity = (-1) * (1 - moonOpacity);
+            console.log(sunOpacity);
+            $(".moon").css({opacity:  moonOpacity })
+            $(".sun").css({opacity:  sunOpacity })
 			 // Alert between a hour gap
 			if ( degreeHour == degree ) {
 							alert("it's " + hours + " o'clock");
