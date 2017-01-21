@@ -11,6 +11,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,65 +20,17 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<style>
-		.time-wheel {
-			padding-top: 30px;
-			padding-bottom: 50px;
-			border: 1px solid #ccc;
-			position: relative;
-		}
-		.time-wheel:before {
-			content: "";
-			position: absolute;
-			border: 10px solid transparent;
-			border-top-color: #eee;
-			top: 0px;
-			left: calc(50% - 10px );
-			
-		}
-        .dayNight {
-            height: auto;
-            max-width:500px;
-            background-color: gray;
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            z-index: 10px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .dayNight.night-mood {
-            background-color: #291942;
-        }
-        .dayNight.day-mood {
-            background-color: #00bcd4;
-        }
-        .sun, .moon {
-            position: absolute;
-            top: 0;
-            z-index: 0;
-        }
-        .night {
-            position: relative;
-            z-index: 10;
-        }
+		
 	</style>
 </head>
 
-<body>
+<body class="night">
 
   
 
     <div class="container">
 		<h1>Time wheel</h1>
     <p class="datetimedisp"></p>
-		
-<!--		<p class="hou"></p>-->
-<!--		<p class="min"></p>-->
-<!--		<p class="sec"></p>-->
-<!--        <p class="scene"></p>-->
-<!--		<div class="time-wheel col-sm-4">-->
-<!--		<img class="img-responsive wheel" src="assets/img/timeWheel.png">-->
-<!--		</div>-->
 	</div>
     
     <div class="container">
@@ -88,7 +41,30 @@
                 <span class="scene"></span>
         </div>
     <div class="dayNight night-mood">
-        <img class="img-responsive night" src="assets/img/night.png">
+<!--		Star Starts		-->
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star " src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<img class="star" src="assets/img/star.png">
+		<img class="star blink" src="assets/img/star.png">
+		<!--		Star Starts Ends		-->
+
+        <img class="img-responsive night-img" src="assets/img/night.png">
         <img class="img-responsive moon" id="moon" src="assets/img/moon.png">
         <img class="img-responsive sun" src="assets/img/sun.png">
 
@@ -176,7 +152,7 @@
 	
 	// For moon raising and set down
 	
-	   if (hours >= 18) {
+	   if (hours >= 17) {
                 var twelveHour = hours - 12;
 		   var moonRaiseInt = twelveHour - 4;
 		var moonRaiseOpacity = (moonRaiseInt/6) * 1.5;
