@@ -36,7 +36,18 @@
 	opacity: 1;
 }
 
-
+.star {
+	visibility: hidden;
+	opacity: 0;
+	transition: all linear 0.50s;
+	-webkit-transition: all linear 0.50s;
+	-moz-transition: all linear 0.50s;
+	-o-transition: all linear 0.50s;
+}
+.night .star {
+	visibility: visible;
+	opacity: 1;
+}
 
         .sun, .moon {
             position: absolute;
@@ -184,6 +195,48 @@
 		}
 
 @keyframes blink {
+    from {
+		transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+		-moz-transform: scale(1,1);
+		-o-transform: scale(1,1);
+	}
+    to {
+		transform: scale(1.4,1.4);
+		-webkit-transform: scale(1.4,1.4);
+		-moz-transform: scale(1.4,1.4);
+		-o-transform: scale(1.4,1.4);
+	}
+}
+@-webkit-keyframes blink {
+    from {
+		transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+		-moz-transform: scale(1,1);
+		-o-transform: scale(1,1);
+	}
+    to {
+		transform: scale(1.4,1.4);
+		-webkit-transform: scale(1.4,1.4);
+		-moz-transform: scale(1.4,1.4);
+		-o-transform: scale(1.4,1.4);
+	}
+}
+@-moz-keyframes blink {
+    from {
+		transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+		-moz-transform: scale(1,1);
+		-o-transform: scale(1,1);
+	}
+    to {
+		transform: scale(1.4,1.4);
+		-webkit-transform: scale(1.4,1.4);
+		-moz-transform: scale(1.4,1.4);
+		-o-transform: scale(1.4,1.4);
+	}
+}
+@-o-keyframes blink {
     from {
 		transform: scale(1,1);
 		-webkit-transform: scale(1,1);
