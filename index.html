@@ -35,8 +35,8 @@
 			
 		}
         .dayNight {
-            height: 500px;
-            width:500px;
+            height: auto;
+            max-width:500px;
             background-color: gray;
             border-radius: 50%;
             overflow: hidden;
@@ -71,13 +71,13 @@
 		<h1>Time wheel</h1>
     <p class="datetimedisp"></p>
 		
-		<p class="hou"></p>
-		<p class="min"></p>
-		<p class="sec"></p>
-        <p class="scene"></p>
-		<div class="time-wheel col-sm-4">
-		<img class="img-responsive wheel" src="assets/img/timeWheel.png">
-		</div>
+<!--		<p class="hou"></p>-->
+<!--		<p class="min"></p>-->
+<!--		<p class="sec"></p>-->
+<!--        <p class="scene"></p>-->
+<!--		<div class="time-wheel col-sm-4">-->
+<!--		<img class="img-responsive wheel" src="assets/img/timeWheel.png">-->
+<!--		</div>-->
 	</div>
     
     <div class="container">
@@ -166,20 +166,69 @@
 			})
 	$(".moon, .sun").css(
 							{
-				'transform':  'rotate(-' + degree + 'deg)',
-					'-webkit-transform': 'rotate(-' + degree + 'deg)',
-						'-moz-transform': 'rotate(-' + degree + 'deg)',
-						'-o-transform': 'rotate(-' + degree + 'deg)'
+				'transform':  'rotate(' + degree + 'deg)',
+					'-webkit-transform': 'rotate(' + degree + 'deg)',
+						'-moz-transform': 'rotate(' + degree + 'deg)',
+						'-o-transform': 'rotate(' + degree + 'deg)'
 			
 			})
+	
+	
+	// For moon raising and set down
+	
+	   if (hours >= 18) {
+                var twelveHour = hours - 12;
+		   var moonRaiseInt = twelveHour - 4;
+		var moonRaiseOpacity = (moonRaiseInt/6) * 1.5;
+		$(".moon").css({opacity:  moonRaiseOpacity });	
+//		   		console.log(moonRaiseOpacity);
 
-    var moonOpacityInt = hours -17;
+		            }
+            else {
+               var moonSetInt = 7 - hours;
+		var moonSetOpacity = (moonSetInt/6) * 1.5;
+		$(".moon").css({opacity:  moonSetOpacity }) 
+//		console.log(moonSetOpacity);
+            }
+
+			
+			// For Sun raise and set down
+			
+	if (hours <= 16) {
+				var sunRiseInt = hours - 4;
+		var sunRiseOpacity = (sunRiseInt/6) * 1.5;
+		$(".sun").css({opacity:  sunRiseOpacity })
+//				console.log(sunRiseOpacity);
+
+	}
+			else {
+				var twelveHour = hours - 12;
+				var sunSetInt = 4 - twelveHour;
+		var sunSetOpacity = ((sunSetInt/6) * 1.5)+1;
+		$(".sun").css({opacity:  sunSetOpacity })
+//				console.log(sunSetOpacity);
+			}
+			
+//	if ( hours > 13 || hours <= 3) {
+//		var moonRaiseInt = hours - 16;
+//		var moonRaiseOpacity = (moonRaiseInt/6) * 1.5;
+//		$(".moon").css({opacity:  moonOpacity })
+//	}
+//			else {
+//			var moonRaiseInt = 5 - 4;
+//		var moonRaiseOpacity = ((moonRaiseInt/6) * 1.5);
+//		console.log(moonRaiseOpacity);	
+
+//			}
+
+//    var moonOpacityInt = hours - 14;
             
-	var moonOpacity = (moonOpacityInt/6);
-            var sunOpacity = (-1) * (1 - moonOpacity);
-            console.log(sunOpacity);
-            $(".moon").css({opacity:  moonOpacity })
-            $(".sun").css({opacity:  sunOpacity })
+//	var moonOpacity = (moonOpacityInt/6) * 1.5;
+//            var sunOpacity =   (1 - moonOpacity) / 1.5;
+//            $(".moon").css({opacity:  moonOpacity })
+//            $(".sun").css({opacity:  sunOpacity })
+//						console.log(moonOpacityInt, moonOpacity, sunOpacity)
+
 			 // Alert between a hour gap
 			if ( degreeHour == degree ) {
 							alert("it's " + hours + " o'clock");
