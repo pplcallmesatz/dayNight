@@ -24,9 +24,9 @@
 	</style>
 </head>
 
-<body class="night">
+<body class="body">
 
-  
+  <div class="overlay"></div>
 
     <div class="container">
 		<h1>Time wheel</h1>
@@ -40,7 +40,7 @@
         <span class="sec"></span>
                 <span class="scene"></span>
         </div>
-    <div class="dayNight night-mood">
+    <div class="dayNight">
 <!--		Star Starts		-->
 		<img class="star blink" src="assets/img/star.png">
 		<img class="star" src="assets/img/star.png">
@@ -65,6 +65,7 @@
 		<!--		Star Starts Ends		-->
 
         <img class="img-responsive night-img" src="assets/img/night.png">
+        <img class="img-responsive day-img" src="assets/img/Morning.png">
         <img class="img-responsive moon" id="moon" src="assets/img/moon.png">
         <img class="img-responsive sun" src="assets/img/sun.png">
 
@@ -205,6 +206,21 @@
 //            $(".sun").css({opacity:  sunOpacity })
 //						console.log(moonOpacityInt, moonOpacity, sunOpacity)
 
+             if ((hours >= 6 ) && (hours <= 16)) {
+                 $('.body').removeClass("night");
+                 $('.body').addClass("day");
+                 }
+                 else if ((hours > 16 ) && (hours <= 19)) {
+                        $('.body').addClass("evening");
+                     $('.body').removeClass("day");
+                     $('.body').removeClass("night");
+                 }
+            else {
+                $('.body').removeClass("day");
+                $('.body').removeClass("evening");
+                $('.body').addClass("night");
+            }
+
 			 // Alert between a hour gap
 			if ( degreeHour == degree ) {
 							alert("it's " + hours + " o'clock");
@@ -212,8 +228,13 @@
 			
 			setTimeout("diplaytime()",1000);
 		}
+        $(window).load(function(){
+            $(".overlay").hide();
+        })
 	$(document).ready(function(){
 		diplaytime();
+        
+       
 	});
 	
 	</script>

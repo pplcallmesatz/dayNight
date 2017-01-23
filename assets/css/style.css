@@ -14,7 +14,7 @@
 	background-color: #291942;
 }
 .day .dayNight {
-	background-color: #00bcd4;
+	background-color: #FACF86;
 }
 .evening .dayNight {
 	background-color: #00bcd4;
@@ -23,18 +23,27 @@
 .day-img,
 .evening-img {
 	opacity: 0;
+    display: none;
+    visibility: hidden;
 }
 .night .night-img,
 .day .day-img,
-.evening .evening-img {
+.evening .day-img {
 	opacity: 1 !important;
+    display: block;
+    visibility: visible;
 }
-.day .day-img {
-	opacity: 1;
-}
-.evening .evening-img {
-	opacity: 1;
-}
+     .sun, .moon {
+            position: absolute;
+            top: 0;
+            z-index: 0;
+        }
+        .night-img, .day-img {
+            position: relative;
+            z-index: 10;
+            top: 0;
+        }
+		
 
 .star {
 	visibility: hidden;
@@ -49,16 +58,13 @@
 	opacity: 1;
 }
 
-        .sun, .moon {
-            position: absolute;
-            top: 0;
-            z-index: 0;
-        }
-        .night-img {
-            position: relative;
-            z-index: 10;
-        }
-		
+.overlay {
+    position: absolute;
+    background-color: rgba(225,225,225,1);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
 		
 /* Star  */
 		.star {
