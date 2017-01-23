@@ -206,11 +206,11 @@
 //            $(".sun").css({opacity:  sunOpacity })
 //						console.log(moonOpacityInt, moonOpacity, sunOpacity)
 
-             if ((hours >= 6 ) && (hours <= 16)) {
+             if ((hours >= 6 ) && (hours < 16)) {
                  $('.body').removeClass("night");
                  $('.body').addClass("day");
                  }
-                 else if ((hours > 16 ) && (hours <= 19)) {
+                 else if ((hours >= 16 ) && (hours < 19)) {
                         $('.body').addClass("evening");
                      $('.body').removeClass("day");
                      $('.body').removeClass("night");
