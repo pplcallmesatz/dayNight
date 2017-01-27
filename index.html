@@ -87,7 +87,7 @@
 </div>
         </div>
     </div>
-    <audio autoplay loop>
+    <audio id="myAudio">
   <source src="assets/audio/t.mp3" type="audio/mpeg">
 </audio>
     <!-- /.container -->
@@ -247,8 +247,17 @@
 			
 			setTimeout("diplaytime()",1000);
 		}
+        
+        var aud = document.getElementById("myAudio"); 
+
+function playAud() { 
+    aud.play();
+     aud.loop = true;
+    alert("audio");
+} 
         $(window).load(function(){
             $(".overlay").hide();
+            playAud();
         })
 	$(document).ready(function(){
 		diplaytime();
