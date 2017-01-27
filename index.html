@@ -253,16 +253,14 @@
 			setTimeout("diplaytime()",1000);
 		}
         
-        var aud = document.getElementById("player"); 
-
-function playAud() { 
-    aud.play();
-     aud.loop = true;
-    alert("audio");
-} 
+$(function() {
+    var audio = $("audio")[0];
+    
+    audio.play();
+    alert("play audio");
+} );
         $(window).load(function(){
             $(".overlay").hide();
-            playAud();
         })
 	$(document).ready(function(){
 		diplaytime();
