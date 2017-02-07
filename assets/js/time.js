@@ -11,7 +11,8 @@
 //			$(".datetimedisp").html(newDate.toLocaleTimeString());
 			
 			// To Print the hours, minutes & second
-			
+						
+
 			
 			  if (seconds < 10 ) {
 				  $(".sec").html("0" + seconds);
@@ -25,6 +26,9 @@
 			else {
 				$(".min").html(minutes);
 			}
+            
+            
+            
 			
             if (hours > 12) {
                 var twelveHour = hours - 12;
@@ -38,7 +42,16 @@
                 $(".scene").html("PM");
             }
             else {
-                $(".hou").html(hours);
+                
+                if (hours < 10) {
+                  
+                     $(".hou").html("0" + hours);
+                }
+                else {
+                    $(".hou").html(hours);
+                }
+                
+                
                 $(".scene").html("AM");
             }
 			// Calculation for converting hours, minutes & second to "Degree"
